@@ -17,7 +17,7 @@ const Home = () => {
 
     try {
       const { data } = await axios.get(
-        "http://localhost:4000/api/data/getAllData",
+        "https://stocksearchtask.herokuapp.com/api/data/getAllData",
         config
       );
 

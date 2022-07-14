@@ -23,7 +23,7 @@ export const AuthProvider = ({children} )=>{
           }
         }
   
-        const {data} = await axios.get(`http://localhost:4000/api/data/searchData/?search=${keyword}`,config)
+        const {data} = await axios.get(`https://stocksearchtask.herokuapp.com/api/data/searchData/?search=${keyword}`,config)
         console.log(data );
         setFinalValue(data)
       } catch (error) {

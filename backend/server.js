@@ -12,6 +12,12 @@ dotenv.config();
 connectDB();
 app.use(cors());
 
+app.use(express.static(path.join(__dirname, "/fronend/build")));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/fronend/build', 'index.html'));
+});
+
 app.get("/", (req, res) => {
     
     res.send("API is running...");
