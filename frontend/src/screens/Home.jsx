@@ -4,6 +4,7 @@ import Search from "../components/Search";
 import Display from "../components/Display";
 import "./Home.css";
 import axios from "axios";
+import Header from "../components/Header";
 
 const Home = () => {
   const [dropData, setDropData] = useState();
@@ -17,7 +18,7 @@ const Home = () => {
 
     try {
       const { data } = await axios.get(
-        "https://stocksearchtask.herokuapp.com/api/data/getAllData",
+        "http://localhost:4000/api/data/getAllData",
         config
       );
 
@@ -34,6 +35,11 @@ const Home = () => {
   return (
     <>
       <Container fluid>
+        <Row>
+          <Col>
+          <Header/>
+          </Col>
+        </Row>
         <Row className="justify-content-md-center my-5">
           <Col lg="6">
             <Search data={dropData} />

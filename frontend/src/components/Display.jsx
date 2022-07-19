@@ -34,7 +34,7 @@ const Display = () => {
 </Card.Body>
 </Card> 
 </Col>
-)) : <h3>no item</h3>}
+)) : <h1 style={{color:"white"}}>no item</h1>}
 
 
 </>

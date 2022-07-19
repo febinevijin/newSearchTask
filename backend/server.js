@@ -4,26 +4,29 @@ import cors from 'cors'
 import connectDB from './config/db.js'
 import { errorHandler, notFound } from './middleware/errorMiddleware.js'
 import dataRoutes from './routes/dataRoutes.js'
+import userRoutes from './routes/userRoutes.js'
+import cookieParser from 'cookie-parser'
+
 
 const app = express()
+app.use(cookieParser());
 app.use(express.json({limit: '50mb'}))
+
 
 dotenv.config();
 connectDB();
-app.use(cors());
 
-app.use(express.static(path.join(__dirname, "/fronend/build")));
+const corsOptions = {
+    origin: 'http://localhost:3000',
+  
+    credentials: true, 
+  }
+app.use(cors(corsOptions));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/fronend/build', 'index.html'));
-});
 
-app.get("/", (req, res) => {
-    
-    res.send("API is running...");
-});
 
 app.use('/api/data', dataRoutes)
+app.use('/api/user', userRoutes)
 
 app.use(notFound)
 app.use(errorHandler)
